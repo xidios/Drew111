@@ -1,0 +1,389 @@
+﻿@using Backend6.Services
+@model Backend6.Models.Order
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Home - Alisa</title>
+    <meta name="description" content="Branding и digital решения для компаний, готовых к переменам сегодня, чтобы стать драйвером для отрасли завтра">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kaushan+Script">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+</head>
+
+<body id="page-top">
+    <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-dark" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="#page-top">ALISA DESIGN AGENCY</a><button data-toggle="collapse" data-target="#navbarResponsive" class="navbar-toggler navbar-toggler-right" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto text-uppercase">
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#services">Главная</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#portfolio">Наши работы</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">О нас</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#team">Наша команда</a></li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#contact">Оформить заказ</a></li>
+                    }
+                    <li class="nav-item"><a asp-action="Create" asp-controller="Orders" class="nav-link js-scroll-trigger">Админ</a></li>
+                    @await Html.PartialAsync("_LoginPartial")
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <header class="masthead" style="background-image:url('assets/img/glavnaya.jpg');">
+        <div class="container">
+            <div class="intro-text">
+                <div class="intro-lead-in"><span></span></div>
+                <div class="intro-heading text-uppercase"><span><br>ДИЗАЙН-АГЕНСТВО «ALISA»<br><br></span></div>
+            </div>
+        </div>
+    </header>
+    <section id="services">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="text-uppercase section-heading"><br>НАПРАВЛЕНИЯ УСЛУГ<br><br></h2>
+                    <h3 class="text-muted section-subheading"></h3>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <h4 class="section-heading">Branding<br></h4>
+                    <p class="text-muted">Исследования и бренд-стратегия<br>Системы идентификации<br>Дизайн продукта и упаковка<br>Рекламные кампании<br><br></p>
+                </div>
+                <div class="col-md-4">
+                    <h4 class="section-heading">Design<br></h4>
+                    <p class="text-muted">Исследования и аналитика<br>Дизайн интерфейса<br>Front-end и back-end разработка<br>Техническая и дизайн поддержка<br><br></p>
+                </div>
+                <div class="col-md-4">
+                    <h4 class="section-heading">Digital<br></h4>
+                    <p class="text-muted">Концепция продукта<br>Дизайн интерфейса<br>Нативная техническая реализация<br>Запуск продукта<br><br></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="bg-light" id="portfolio">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="text-uppercase section-heading">Наши работы</h2>
+                    <h3 class="text-muted section-subheading"></h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 col-md-4 portfolio-item">
+                    <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content"><i class="fa fa-plus fa-3x"></i></div>
+                        </div><img class="img-fluid" src="assets/img/portfolio/1.png">
+                    </a>
+                    <div class="portfolio-caption">
+                        <h4>Фотостудия "Фантазм"</h4>
+                        <p class="text-muted"></p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 portfolio-item">
+                    <a class="portfolio-link" data-toggle="modal" href="#portfolioModal2">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content"><i class="fa fa-plus fa-3x"></i></div>
+                        </div><img class="img-fluid" src="assets/img/portfolio/4be77185800540b89334de9f3b5b6e41.png">
+                    </a>
+                    <div class="portfolio-caption">
+                        <h4>SANE Барбер-шоп</h4>
+                        <p class="text-muted"></p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 portfolio-item">
+                    <a class="portfolio-link" data-toggle="modal" href="#portfolioModal3">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content"><i class="fa fa-plus fa-3x"></i></div>
+                        </div><img class="img-fluid" src="assets/img/portfolio/604093bad57945fcadbaf459d0d4b13f.png">
+                    </a>
+                    <div class="portfolio-caption">
+                        <h4>Валерия ARTS</h4>
+                        <p class="text-muted"></p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 portfolio-item">
+                    <a class="portfolio-link" data-toggle="modal" href="#portfolioModal4"><img class="img-fluid" src="assets/img/portfolio/e3aae07fdbb94b31b6e98051fe53ac50.png"></a>
+                    <div class="portfolio-caption">
+                        <h4>Ресторан "Старый моряк"</h4>
+                        <p class="text-muted"></p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 portfolio-item">
+                    <a class="portfolio-link" data-toggle="modal" href="#portfolioModal5">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content"><i class="fa fa-plus fa-3x"></i></div>
+                        </div><img class="img-fluid" src="assets/img/portfolio/46215c4de01644acaef4b65c353087c5.png">
+                    </a>
+                    <div class="portfolio-caption">
+                        <h4>Цветочный магазин "Хризантема"</h4>
+                        <p class="text-muted"></p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 portfolio-item">
+                    <a class="portfolio-link" data-toggle="modal" href="#portfolioModal6">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content"><i class="fa fa-plus fa-3x"></i></div>
+                        </div><img class="img-fluid" src="assets/img/portfolio/fd42e89114ea462ab24511a520ab12b9.png">
+                    </a>
+                    <div class="portfolio-caption">
+                        <h4>Фирма дверей "На Замок"</h4>
+                        <p class="text-muted"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="text-uppercase">Немного о нас</h2>
+                    <h3 class="text-muted section-subheading">Перед организацией «ALISA» стоит одна цель — предоставление быстрых и качественных услуг. Процесс нашей работы основывается на комплексной работе и постоянной связи с клиентом. В рамках всех наших инициатив мы стремимся формировать качественные отношения с людьми и предоставлять только лучшее.</h3>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <section class="bg-light" id="team">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="team-member">
+                        <img class="rounded-circle mx-auto" src="assets/img/komanda/ruslan.jpg">
+                        <h4>Руслан Гительман</h4>
+                        <p class="text-muted">Главный дизайнер</p>
+                        <ul class="list-inline social-buttons">
+                            <li class="list-inline-item"><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="team-member">
+                        <img class="rounded-circle mx-auto" src="assets/img/komanda/alex.jpg">
+                        <h4>Александр Пистолетов</h4>
+                        <p class="text-muted">Дизайнер</p>
+                        <ul class="list-inline social-buttons">
+                            <li class="list-inline-item"><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="team-member">
+                        <img class="rounded-circle mx-auto" src="assets/img/komanda/ivan.jpg">
+                        <h4>Иван Темнохолмов</h4>
+                        <p class="text-muted">Главный разработчик</p>
+                        <ul class="list-inline social-buttons">
+                            <li class="list-inline-item"><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    @if (User.Identity.IsAuthenticated)
+    {<section id="contact" style="background-image:url('assets/img/map-image.png');">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h2 class="text-uppercase section-heading">Связь с нами</h2>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form id="contactForm" name="contactForm" novalidate="novalidate">
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <div class="form-group"><input class="form-control" type="text" id="name" placeholder="Ваше имя *" required=""><small class="form-text text-danger flex-grow-1 help-block lead"></small></div>
+                                    <div class="form-group"><input class="form-control" type="email" id="email" placeholder="Ваша почта *" required=""><small class="form-text text-danger help-block lead"></small></div>
+                                    <div class="form-group"><input class="form-control" type="tel" placeholder="Ваш номер *" required=""><small class="form-text text-danger help-block lead"></small></div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group"><textarea class="form-control" id="message" placeholder="Ваше сообщение *" required=""></textarea><small class="form-text text-danger help-block lead"></small></div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="col-lg-12 text-center">
+                                    <div id="success"></div><button class="btn btn-primary btn-xl text-uppercase" id="sendMessageButton" type="submit">Отправить сообщение</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>}
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4"><span class="copyright">Copyright&nbsp;© OXANA 2021</span></div>
+                <div class="col-md-4">
+                    <ul class="list-inline social-buttons">
+                        <li class="list-inline-item"><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li class="list-inline-item"><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <ul class="list-inline quicklinks">
+                        <li class="list-inline-item"><a href="#">Защита данных</a></li>
+                        <li class="list-inline-item"><a href="#">Правовая информация</a></li>
+                        <li class="list-inline-item"><a href="#">Центр безопасности</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div class="modal fade text-center portfolio-modal" role="dialog" tabindex="-1" id="portfolioModal1">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 mx-auto">
+                            <div class="modal-body">
+                                <h2 class="text-uppercase">Фотостудия "Фантазм"</h2>
+                                <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/1.png">
+                                <p>Это наше лого разработанное для фотостудии "Фантазм"</p>
+                                <ul class="list-unstyled">
+                                    <li>Дата: Январь 2018</li>
+                                    <li>Тип предприятия: Искусство</li>
+                                </ul><button class="btn btn-primary" data-dismiss="modal" type="button"><i class="fa fa-times"></i><span>&nbsp;Закрыть проект</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade text-center portfolio-modal" role="dialog" tabindex="-1" id="portfolioModal2">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 mx-auto">
+                            <div class="modal-body">
+                                <h2 class="text-uppercase">SANE Барбер-шоп</h2>
+                                <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/4be77185800540b89334de9f3b5b6e41.png">
+                                <p>Это наше лого разработанное для барбер-шопа "SANE"</p>
+                                <ul class="list-unstyled">
+                                    <li>Дата: Июль 2018</li>
+                                    <li>Тип предприятия: Здоровье и услуги</li>
+                                </ul><button class="btn btn-primary" data-dismiss="modal" type="button"><i class="fa fa-times"></i><span>&nbsp;Закрыть проект</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade text-center portfolio-modal" role="dialog" tabindex="-1" id="portfolioModal3">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 mx-auto">
+                            <div class="modal-body">
+                                <h2 class="text-uppercase">Valeria ARTS</h2>
+                                <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/604093bad57945fcadbaf459d0d4b13f.png">
+                                <p>Это наше лого разработанное для частного лица Валерии Ишковой, группы "Valeria ARTS"</p>
+                                <ul class="list-unstyled">
+                                    <li>Дата: Сентябрь 2018</li>
+                                    <li>Тип предприятия: Искусство</li>
+                                </ul><button class="btn btn-primary" data-dismiss="modal" type="button"><i class="fa fa-times"></i><span>&nbsp;Закрыть проект</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade text-center portfolio-modal" role="dialog" tabindex="-1" id="portfolioModal4">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 mx-auto">
+                            <div class="modal-body">
+                                <h2 class="text-uppercase">Ресторан "Старый моряк"</h2>
+                                <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/e3aae07fdbb94b31b6e98051fe53ac50.png">
+                                <p>Это наше лого разработанное для ресторана "Старый моряк"</p>
+                                <ul class="list-unstyled">
+                                    <li>Дата: Январь 2019</li>
+                                    <li>Тип предприятия: Ресторан</li>
+                                </ul><button class="btn btn-primary" data-dismiss="modal" type="button"><i class="fa fa-times"></i><span>&nbsp;Закрыть проект</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade text-center portfolio-modal" role="dialog" tabindex="-1" id="portfolioModal5">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 mx-auto">
+                            <div class="modal-body">
+                                <h2 class="text-uppercase">Цветочный магазин "Хризантема"</h2>
+                                <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/46215c4de01644acaef4b65c353087c5.png">
+                                <p>Это наше лого разработанное для цветочного магазина "Хризантема"</p>
+                                <ul class="list-unstyled">
+                                    <li>Дата: Март 2019</li>
+                                    <li>Тип предприятия: Магазин</li>
+                                </ul><button class="btn btn-primary" data-dismiss="modal" type="button"><i class="fa fa-times"></i><span>&nbsp;Закрыть проект</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade text-center portfolio-modal" role="dialog" tabindex="-1" id="portfolioModal6">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 mx-auto">
+                            <div class="modal-body">
+                                <h2 class="text-uppercase">Фирма дверей "На Замок"</h2>
+                                <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/fd42e89114ea462ab24511a520ab12b9.png">
+                                <p>Это наше лого разработанное для фирма дверей "На Замок"</p>
+                                <ul class="list-unstyled">
+                                    <li>Дата: Август 2019</li>
+                                    <li>Тип предприятия: Фирма</li>
+                                </ul><button class="btn btn-primary" data-dismiss="modal" type="button"><i class="fa fa-times"></i><span>&nbsp;Закрыть проект</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script src="assets/js/agency.js"></script>
+</body>
+
+</html>

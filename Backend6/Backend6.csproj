@@ -1,0 +1,68 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <UserSecretsId>aspnet-Backend6-4fd1b34e-3551-4869-9119-f7b6184396dc</UserSecretsId>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="Data\Migrations\20210326093651_AddForumTopics3.cs" />
+    <Compile Remove="Data\Migrations\20210326093651_AddForumTopics3.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210326094904_AddForumTopicsFix.cs" />
+    <Compile Remove="Data\Migrations\20210326094904_AddForumTopicsFix.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210326111737_AddForumMessage.cs" />
+    <Compile Remove="Data\Migrations\20210326111737_AddForumMessage.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210326111947_AddForumMessage.cs" />
+    <Compile Remove="Data\Migrations\20210326111947_AddForumMessage.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210326112142_AddForumMessage.cs" />
+    <Compile Remove="Data\Migrations\20210326112142_AddForumMessage.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210326112608_AddForumMessage.cs" />
+    <Compile Remove="Data\Migrations\20210326112608_AddForumMessage.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210513160504_Drew.cs" />
+    <Compile Remove="Data\Migrations\20210513160504_Drew.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210513163034_Drew.cs" />
+    <Compile Remove="Data\Migrations\20210513163034_Drew.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210513164614_Drew.cs" />
+    <Compile Remove="Data\Migrations\20210513164614_Drew.Designer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore" Version="2.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.6" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.0.4" />
+    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.3" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="2.0.2" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="2.0.3" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.4" PrivateAssets="All" />
+  </ItemGroup>
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.1" />
+    <DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="2.0.0" />
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="wwwroot\assets\bootstrap\css\bootstrap.min.css" />
+    <None Include="wwwroot\assets\bootstrap\js\bootstrap.min.js" />
+    <None Include="wwwroot\assets\fonts\font-awesome.min.css" />
+    <None Include="wwwroot\assets\fonts\fontawesome-webfont.eot" />
+    <None Include="wwwroot\assets\fonts\fontawesome-webfont.svg" />
+    <None Include="wwwroot\assets\fonts\fontawesome-webfont.ttf" />
+    <None Include="wwwroot\assets\fonts\fontawesome-webfont.woff" />
+    <None Include="wwwroot\assets\fonts\fontawesome-webfont.woff2" />
+    <None Include="wwwroot\assets\fonts\FontAwesome.otf" />
+    <None Include="wwwroot\assets\img\glavnaya.jpg" />
+    <None Include="wwwroot\assets\img\glavnaya\pexels-daria-shevtsova-1560932.jpg" />
+    <None Include="wwwroot\assets\img\komanda\alex.jpg" />
+    <None Include="wwwroot\assets\img\komanda\ivan.jpg" />
+    <None Include="wwwroot\assets\img\komanda\ruslan.jpg" />
+    <None Include="wwwroot\assets\img\portfolio\1.png" />
+    <None Include="wwwroot\assets\img\portfolio\46215c4de01644acaef4b65c353087c5.png" />
+    <None Include="wwwroot\assets\img\portfolio\4be77185800540b89334de9f3b5b6e41.png" />
+    <None Include="wwwroot\assets\img\portfolio\604093bad57945fcadbaf459d0d4b13f.png" />
+    <None Include="wwwroot\assets\img\portfolio\e3aae07fdbb94b31b6e98051fe53ac50.png" />
+    <None Include="wwwroot\assets\img\portfolio\fd42e89114ea462ab24511a520ab12b9.png" />
+    <None Include="wwwroot\assets\js\agency.js" />
+    <None Include="wwwroot\assets\js\jquery.min.js" />
+  </ItemGroup>
+
+</Project>
