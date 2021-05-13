@@ -74,7 +74,7 @@ namespace Backend6
 
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Posts}/{action=Index}/{id?}");
+                    template: "{controller=Home}/{action=Index}/{id?}");
             });
 
         }
