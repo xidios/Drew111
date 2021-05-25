@@ -13,7 +13,6 @@ namespace Backend6.Models
         [Required]
         public String Name { get; set; }
         public ApplicationUser Creator { get; set; }
-
         public Guid ExecutorId { get; set; }
         public Executor Executor { get; set; }
         public Guid ProductId { get; set; }

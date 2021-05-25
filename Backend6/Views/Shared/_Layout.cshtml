@@ -26,16 +26,16 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-area="" asp-controller="Posts" asp-action="Index" class="navbar-brand">ADMIN</a>
+                <a asp-area="" asp-controller="Posts" asp-action="Index" class="navbar-brand">Панель управления</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     @if (User.IsInRole(ApplicationRoles.Administrators))
                     {
-                    }
                     <li><a asp-area="" asp-controller="Orders" asp-action="Index">Заказы</a></li>
                     <li><a asp-area="" asp-controller="Products" asp-action="Index">Товары</a></li>
                     <li><a asp-area="" asp-controller="Executors" asp-action="Index">Исполнители</a></li>
+                    }
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Сайт</a></li>
                 </ul>
                 @await Html.PartialAsync("_LoginPartial")
@@ -74,3 +74,7 @@
     @RenderSection("Scripts", required: false)
 </body>
 </html>
+
+@section Styles {
+    background-color: maroon;
+}

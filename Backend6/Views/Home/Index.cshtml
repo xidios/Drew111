@@ -36,8 +36,10 @@
                     {
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#contact">Оформить заказ</a></li>
                     }
-                    <li class="nav-item"><a asp-action="Create" asp-controller="Orders" class="nav-link js-scroll-trigger">Админ</a></li>
-
+                    @if (User.IsInRole(ApplicationRoles.Administrators))
+                    {
+                        <li class="nav-item"><a asp-action="Create" asp-controller="Orders" class="nav-link js-scroll-trigger">Панель управления</a></li>
+                    }
                 </ul>
                 @await Html.PartialAsync("_LoginPartial")
             </div>

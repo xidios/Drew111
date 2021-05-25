@@ -17,11 +17,8 @@ namespace Backend6.Data
         }
 
         public DbSet<PostCategory> PostCategories { get; set; }
-
         public DbSet<Post> Posts { get; set; }
-
         public DbSet<PostComment> PostComments { get; set; }
-
         public DbSet<PostAttachment> PostAttachments { get; set; }
         public DbSet<ForumCategory> ForumCategories { get; set; }
         public DbSet<Forum> Forums { get; set; }
