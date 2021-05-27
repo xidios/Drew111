@@ -6,16 +6,15 @@ using System.Threading.Tasks;
 
 namespace Backend6.Models
 {
-    public class Order
+    public class OrderExecutor
     {
         public Guid Id { get; set; } = Guid.NewGuid();
-
+        
+        public Guid OrderId { get; set; }
         [Required]
-        public String Name { get; set; }
-        public ApplicationUser Creator { get; set; }
-        public Guid ProductId { get; set; }
-        public Product Product { get; set; }
-        public String Email { get; set; }
-
+        public Order Order { get; set; }
+        public Guid ExecutorId { get; set; }
+        [Required]
+        public Executor Executor { get; set; }
     }
 }

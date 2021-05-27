@@ -1,0 +1,30 @@
+﻿@model Backend6.Models.OrderExecutor
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Детали заказа</h2>
+
+<div>
+    <h4>Заказ</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Executor)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Executor.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Order)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Order.Name)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Изменить</a> |
+    <a asp-action="Index">Назад</a>
+</div>

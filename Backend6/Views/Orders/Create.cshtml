@@ -6,24 +6,25 @@
 
 <h2>Создать</h2>
 
-<h4>Заказ</h4>
+<h4>Запрос</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Name" class="control-label">Название продукта</label>
+                <label asp-for="Name" class="control-label">Описание запроса (max 255 символов)</label>
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ExecutorId" class="control-label">ID Исполнителя</label>
-                <select asp-for="ExecutorId" class ="form-control" asp-items="ViewBag.ExecutorId"></select>
+                <label asp-for="ProductId" class="control-label">Выберите тип продукта</label>
+                <select asp-for="ProductId" class ="form-control" asp-items="ViewBag.ProductId"></select>
             </div>
             <div class="form-group">
-                <label asp-for="ProductId" class="control-label">ID Продукта</label>
-                <select asp-for="ProductId" class ="form-control" asp-items="ViewBag.ProductId"></select>
+                <label asp-for="Email" class="control-label">Оставьте свою почту</label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Создать" class="btn btn-default" />

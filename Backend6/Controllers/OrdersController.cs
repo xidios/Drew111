@@ -22,7 +22,7 @@ namespace Backend6.Controllers
         // GET: Orders
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Orders.Include(o => o.Executor).Include(o => o.Product);
+            var applicationDbContext = _context.Orders.Include(o => o.Product);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -35,7 +35,6 @@ namespace Backend6.Controllers
             }
 
             var order = await _context.Orders
-                .Include(o => o.Executor)
                 .Include(o => o.Product)
                 .SingleOrDefaultAsync(m => m.Id == id);
             if (order == null)
@@ -49,7 +48,6 @@ namespace Backend6.Controllers
         // GET: Orders/Create
         public IActionResult Create()
         {
-            ViewData["ExecutorId"] = new SelectList(_context.Executors, "Id", "Name");
             ViewData["ProductId"] = new SelectList(_context.Products, "Id", "Name");
             return View();
         }
@@ -59,16 +57,15 @@ namespace Backend6.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,ExecutorId,ProductId")] Order order)
+        public async Task<IActionResult> Create([Bind("Id,Name,ProductId,Email")] Order order)
         {
             if (ModelState.IsValid)
             {
                 order.Id = Guid.NewGuid();
                 _context.Add(order);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index","Home");
             }
-            ViewData["ExecutorId"] = new SelectList(_context.Executors, "Id", "Name", order.ExecutorId);
             ViewData["ProductId"] = new SelectList(_context.Products, "Id", "Name", order.ProductId);
             return View(order);
         }
@@ -86,7 +83,6 @@ namespace Backend6.Controllers
             {
                 return NotFound();
             }
-            ViewData["ExecutorId"] = new SelectList(_context.Executors, "Id", "Name", order.ExecutorId);
             ViewData["ProductId"] = new SelectList(_context.Products, "Id", "Name", order.ProductId);
             return View(order);
         }
@@ -96,7 +92,7 @@ namespace Backend6.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("Id,Name,ExecutorId,ProductId")] Order order)
+        public async Task<IActionResult> Edit(Guid id, [Bind("Id,Name,ProductId,Email")] Order order)
         {
             if (id != order.Id)
             {
@@ -123,7 +119,6 @@ namespace Backend6.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ExecutorId"] = new SelectList(_context.Executors, "Id", "Name", order.ExecutorId);
             ViewData["ProductId"] = new SelectList(_context.Products, "Id", "Name", order.ProductId);
             return View(order);
         }
@@ -137,7 +132,6 @@ namespace Backend6.Controllers
             }
 
             var order = await _context.Orders
-                .Include(o => o.Executor)
                 .Include(o => o.Product)
                 .SingleOrDefaultAsync(m => m.Id == id);
             if (order == null)

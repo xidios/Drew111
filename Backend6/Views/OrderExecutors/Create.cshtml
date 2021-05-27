@@ -1,26 +1,23 @@
-﻿@model Backend6.Models.Executor
+﻿@model Backend6.Models.OrderExecutor
 
 @{
     ViewData["Title"] = "Create";
 }
 
-<h2>Создать</h2>
+<h2>Оформить заказ</h2>
 
-<h4>Исполнитель</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Name" class="control-label">ФИО</label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
+                <label asp-for="OrderId" class="control-label">Запрос от пользователя</label>
+                <select asp-for="OrderId" class ="form-control" asp-items="ViewBag.OrderId"></select>
             </div>
             <div class="form-group">
-                <label asp-for="Position" class="control-label">Позиция в компании</label>
-                <input asp-for="Position" class="form-control" />
-                <span asp-validation-for="Position" class="text-danger"></span>
+                <label asp-for="ExecutorId" class="control-label">Назначить исполнителя</label>
+                <select asp-for="ExecutorId" class ="form-control" asp-items="ViewBag.ExecutorId"></select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Создать" class="btn btn-default" />

@@ -28,6 +28,7 @@ namespace Backend6.Data
         public DbSet<Order> Orders { get; set; }
         public DbSet<Executor> Executors { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<OrderExecutor> orderExecutors { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder builder)

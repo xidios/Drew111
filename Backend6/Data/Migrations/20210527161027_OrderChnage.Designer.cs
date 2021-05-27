@@ -11,9 +11,10 @@ using System;
 namespace Backend6.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210527161027_OrderChnage")]
+    partial class OrderChnage
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -214,24 +215,6 @@ namespace Backend6.Data.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("Orders");
-                });
-
-            modelBuilder.Entity("Backend6.Models.OrderExecutor", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<Guid>("ExecutorId");
-
-                    b.Property<Guid>("OrderId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ExecutorId");
-
-                    b.HasIndex("OrderId");
-
-                    b.ToTable("orderExecutors");
                 });
 
             modelBuilder.Entity("Backend6.Models.Post", b =>
@@ -496,19 +479,6 @@ namespace Backend6.Data.Migrations
                     b.HasOne("Backend6.Models.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("Backend6.Models.OrderExecutor", b =>
-                {
-                    b.HasOne("Backend6.Models.Executor", "Executor")
-                        .WithMany()
-                        .HasForeignKey("ExecutorId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("Backend6.Models.Order", "Order")
-                        .WithMany()
-                        .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

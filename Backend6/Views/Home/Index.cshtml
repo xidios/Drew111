@@ -209,26 +209,14 @@
     {<section id="contact" style="background-image:url('assets/img/map-image.png');">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-12 text-center">
-                        <h2 class="text-uppercase section-heading">Связь с нами</h2>
-
-                    </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-12">
                         <form id="contactForm" name="contactForm" novalidate="novalidate">
-                            <div class="form-row">
-                                <div class="col-md-6">
-                                    <div class="form-group"><input class="form-control" type="text" id="name" placeholder="Ваше имя *" required=""><small class="form-text text-danger flex-grow-1 help-block lead"></small></div>
-                                    <div class="form-group"><input class="form-control" type="email" id="email" placeholder="Ваша почта *" required=""><small class="form-text text-danger help-block lead"></small></div>
-                                    <div class="form-group"><input class="form-control" type="tel" placeholder="Ваш номер *" required=""><small class="form-text text-danger help-block lead"></small></div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group"><textarea class="form-control" id="message" placeholder="Ваше сообщение *" required=""></textarea><small class="form-text text-danger help-block lead"></small></div>
-                                </div>
+                            <div class="form-row">                               
                                 <div class="clearfix"></div>
                                 <div class="col-lg-12 text-center">
-                                    <div id="success"></div><button class="btn btn-primary btn-xl text-uppercase" id="sendMessageButton" type="submit">Отправить сообщение</button>
+                                    <div id="success"></div><button asp-action="Create" asp-controller="Orders" class="btn btn-primary btn-xl text-uppercase" id="sendMessageButton" type="submit">Сделать заказ</button>
                                 </div>
                             </div>
                         </form>
